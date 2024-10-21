@@ -1,0 +1,650 @@
+/* palete:
+1) verde claro (6bffb8) --> aquamarine
+2) verde mais escuro (2AD897) --> also aquamarine
+3) rosa (para destaques) (ffa69e) --> melon
+3.5) rosa mais claro (ffc1bb)
+4) preto (36382e) --> black olive
+5) branco */
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  padding-bottom: 5em;
+
+}
+
+/* GENERAL STYLES */
+
+a {
+  color: #36382e;
+  text-decoration: none;
+  margin: 0;
+}
+
+a:hover,
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
+h2 {
+  color: #2AD897;
+}
+
+h3 {
+  margin: 0.5em 0em;
+}
+
+.nav-tabs .nav-link {
+  color: #36382e;
+  justify-content: center;
+}
+
+.nav-tabs .nav-link.active {
+  color: #2AD897;
+}
+
+a.dropdown-item:active {
+  background-color: #2AD897;
+}
+
+input[type="checkbox"]:checked,  
+input[type="radio"]:checked {
+  background-color: #6bffb8;
+  border-color: #6bffb8;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  border-color: #6bffb8;
+  box-shadow: 0 0 0 0.25rem rgb(107,255,184, 0.3);
+}
+
+.form-control:focus {
+  border-color: #6bffb8;
+  box-shadow: 0 0 0 0.25rem rgb(107,255,184, 0.3);
+}
+
+/* Change autofill background color */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* Change text color for autofill */
+input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+}
+
+
+.primaryButton {
+  background-color: #6bffb8;
+  border-color: #6bffb8;
+  margin-top: 1em;
+  color: #36382e;
+  color: #36382e;
+  padding: 1rem;
+}
+
+.primaryButton:hover,
+.primaryButton:active {
+  background-color: #2AD897 !important;
+  border-color: #2AD897 !important;
+  color: white;
+}
+
+.secondaryButton {
+  background-color: white;
+  border-color: #ffa69e;
+  margin-top: 1em;
+  color: #ffa69e;
+  color: #ffa69e;
+  padding: 1rem;
+}
+
+.secondaryButton:hover,
+.secondaryButton:active {
+  background-color: #ffa69e !important;
+  border-color: #ffa69e !important;
+  color: white;
+}
+
+.tertiaryButton {
+  background-color: white;
+  border-color: #36382e;
+  margin-top: 1em;
+  color: #36382e;
+  color: #36382e;
+  padding: 1rem;
+}
+
+.tertiaryButton:hover,
+.tertiaryButton:active {
+  background-color: #36382e !important;
+  border-color: #36382e !important;
+}
+
+.nonBtnLink {
+  color: #2AD897;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.nonBtnLink:hover,
+.nonBtnLink:active {
+  color: #ffa69e;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.nonBtnLinkTwo {
+  color: #36382e;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.nonBtnLinkTwo:hover,
+.nonBtnLinkTwo:active {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+
+/* navbar */
+
+.NavigationBar {
+  background-color: rgb(255, 255, 255, 0.5);
+  height: 15vh;
+  font-size: 1.5em;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+}
+
+.centerNavBar {
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.navbarItem:hover {
+  text-decoration: underline;
+  text-underline-offset: 15px;
+}
+
+.PAAWSLogo {
+  width: 20%;
+  height: 20%;
+}
+
+/* this should only happen when collapsed, there is still some overlap with regular navbar blur */
+/* .centerNavBar {
+  background-color: rgb(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.navbarRight {
+  background-color: rgb(255, 255, 255, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+} */
+
+.navbarRight {
+  position: relative;
+}
+
+/* footer */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3em;
+  background-color: white;
+  font-size: 18px;
+}
+
+.footerImg {
+  width: 100%;
+  position: absolute;
+}
+
+.footerItems {
+  color: white;
+  bottom: 0;
+}
+
+/* login */
+
+.forgotPass {
+  text-align: left;
+  font-size: 16px;
+}
+
+/* home page */
+
+.homeSections {
+  width: 100%;
+  height: auto;
+}
+
+.homeBanner {
+  margin-bottom: 5rem;
+}
+
+.pawprints {
+  position: absolute;
+  left: 2em;
+}
+
+.meetYourCompaawnion {
+  height: 100%;
+  padding: 10% 0%;
+}
+
+.aboutUs {
+  height: 100%;
+  padding: 40% 0%;
+}
+
+.successStories {
+  height: 100%;
+  padding: 10% 0% 25% 0%;
+}
+
+.sectionTitle {
+  font-size: clamp(7vw, 5vw, 3rem);
+  line-height: 1.5;
+  font-weight: 800;
+  color: #36382e;
+  text-decoration: none;
+}
+
+.sectionTitle:hover,
+.sectionTitle:active {
+  color: #ffa69e;
+}
+
+.meetYourCompaawnion,
+.successStories {
+  text-align: right;
+  position: relative;
+  padding-right: 2em;
+}
+
+.aboutUs {
+  text-align: left;
+  position: relative;
+  padding-left: 2em;
+}
+
+/* about us & success stories */
+
+.aboutUsPage,
+.storiesPage {
+  color: #36382e;
+}
+
+.aboutUsPage p,
+.storiesPage p {
+  font-size: 18px;
+  line-height: 1.75;
+  margin-top: 1rem;
+}
+
+.pageHeader {
+  width: 100%;
+  height: 30%;
+  padding-top: 2em;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.aboutUsHeader {
+  background-color: #6bffb8;
+}
+
+.storiesHeader {
+  background-color: #ffa69e;
+}
+
+.pageHeaderText {
+  font-size: 25px !important;
+  padding: 0.5em 0em 1em;
+}
+
+.aboutUsDesc,
+.motivationText,
+.storiesDesc,
+.storiesConclusion {
+    margin: 4em 5em;
+    text-align: justify;
+}
+
+.motivationTitle {
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  text-decoration-color: #2AD897;
+}
+
+.ourStory {
+  background-color: #ffa69e;
+  padding: 5em;
+}
+
+.ourStoryText,
+.ourMissionText,
+.storyText {
+  text-align: justify;
+}
+
+.ourStoryTitle,
+.ourMissionTitle,
+.motivationTitle {
+  margin-bottom: 1.5em;
+}
+
+.ourMission {
+  padding: 5em;
+  background-color: #ffc1bb;
+}
+
+.aboutUsDoubleSec {
+  margin-bottom: 7em;
+}
+
+.howItWorks {
+  height: 25%;
+  text-align: middle;
+}
+
+.howItWorksHeader {
+  background-color: #2AD897;
+  padding: 5em;
+}
+
+.howItWorksTitle {
+  line-height: 1.75;
+}
+
+.howItWorksOne {
+  background-color: #4ceca9;
+  padding: 5em;
+}
+
+.howItWorksTwo {
+  background-color: #6bffb8;
+  padding: 5em;
+}
+
+.howItWorksThree {
+  background-color: #a9ffd6;
+  padding: 5em;
+}
+
+.callToAction {
+  margin: 5em 0em;
+}
+
+.callToActionTitle {
+  margin-bottom: 1em;
+}
+
+.callToActionText {
+  font-size: 18px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.contactUs {
+  background-color: #6bffb8;
+  padding: 2em;
+  text-align: center;
+}
+
+.contactUsTitle {
+  margin: 2em 0em 0em 0em;
+}
+
+.contactUsText {
+  text-align: justify;
+  padding: 2em;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+.aboutUsPaawsLogo {
+  background-color: #36382e;
+  justify-content: center;
+}
+
+.socialMediaIcons {
+  display: flex;
+  font-size: 40px;
+  padding: 0em 6em;
+  justify-content: space-between;
+}
+
+.storyOne,
+.storyTwo,
+.storyThree {
+  padding: 3em;
+}
+
+.StoryTitle {
+  padding: 1em;
+}
+
+.storyOne {
+  background-color: #3dce94;
+}
+
+.storyTwo {
+  background-color: #3ce2a1;
+}
+
+.storyThree {
+  background-color: #67e9b6;
+}
+
+.storyImg {
+  width: 100%;
+  height: 35vh;
+  object-fit: cover;
+  border: #36382e solid 3px;
+  margin-bottom: 1.5em;
+}
+
+.storyImgAfterOne {
+  margin: 3em 0em 0em 0em;
+}
+
+.storyImgAfterTwo,
+.storyImgAfterThree {
+  margin-top: 1em;
+}
+
+.cTABtn {
+  font-size: 18px;
+  margin-top: -1em;
+}
+
+.animalSearchHeader {
+  background-color: #ffc1bb;
+  margin-bottom: 1.5em;
+}
+
+/*  .sortBy {
+    text-align: right;
+    margin: 2em 3.5em 2em 0em;
+
+  } */
+
+
+/**/
+
+/* user profile */
+
+.userProfileHeader {
+    background-color: #2AD897;
+}
+
+.userHeader {
+  text-align: left;
+  margin: 2rem 0rem 1.5rem 2rem;
+}
+
+.scrollingWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+      display: none;
+  }
+}
+
+.card {
+  margin: 1rem;
+  width: 18rem;
+  flex: "0 0 auto";
+  padding: 2em;
+  color: #36382e !important;
+}
+
+/* personal data */
+.personalDataLabel {
+  color: #36382e;
+  margin: 1em 0em;
+}
+
+.pending {
+  background-color: rgb(54,56,46, 0.1);
+}
+
+.approved {
+  background-color: rgb(107,255,184, 0.3)
+}
+
+.rejected {
+  background-color: rgb(255,193,187, 0.5);
+}
+
+/* filter section */
+
+.filterTitle {
+  padding: 1em 0em 0.25em 0;
+  font-weight: bold;
+  color: #36382e;
+}
+
+.filterItem {
+  width: 50%;
+  margin: auto;
+}
+
+
+/* animal page */
+
+.animalPage {
+  width: 90%;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 5em;
+}
+
+.animalPageDesc {
+  text-align: left;
+  padding-top: 0;
+}
+
+.animalPageBtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 1.5rem;
+}
+
+.animalPageText {
+  color: #36382e;
+}
+
+.toAdoptionForm {
+  background-color: #ffa69e;
+  padding: 3em;
+  color: #36382e;
+}
+
+.imageSwitcher img {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+  height: 70vh;
+  width: 100vh;
+  object-fit: cover;
+  
+}
+
+.imageSwitcher img.hidden {
+  opacity: 0;
+}
+
+/* .animalPageBtnL {
+  left: 0;
+}
+
+.animalPageBtnR {
+  right: 0;
+} */
+
+.carouselBtn {
+  background-color: white;
+  color: #36382e;
+  border: none;
+}
+
+.carouselBtn:hover,
+.carouselBtn:active {
+  background-color: #36382e;
+  color: white
+}
+
+.imageControls {
+  margin: auto;
+}
+
+/* adoptionForm */
+
+.adoptionFormCard {
+  width: 65%;
+  height: 30vh;
+  margin: auto;
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+/* Admin */
+
+.adminCard {
+  width: 18rem;
+  height: 80%;
+  margin: auto;
+  margin-top: 3em;
+}
+
+.adminForm {
+  width: 85%;
+  margin: auto;
+  margin-top: 3em;
+}
