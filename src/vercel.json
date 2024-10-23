@@ -1,6 +1,25 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/index.html" }
+      { "source": "/aboutus", "destination": "/" },
+      { "source": "/successstories", "destination": "/" },
+      { "source": "/login", "destination": "/" },
+      { "source": "/register", "destination": "/" },
+      { "source": "/resetpass/:token", "destination": "/" },
+      { "source": "/userprofile", "destination": "/" },
+      { "source": "/personaldata", "destination": "/" },
+      { "source": "/ourpets", "destination": "/" },
+      { "source": "/animalpage/:id", "destination": "/" },
+      { "source": "/adoptionform/:id", "destination": "/" },
+      { "source": "/sponsor/:id", "destination": "/" },
+      { "source": "/adminadd", "destination": "/" },
+      { "source": "/adminedit", "destination": "/" },
+      { "source": "/admindelete", "destination": "/" },
+      { "source": "/adoptionstatus", "destination": "/" },
+      { "source": "/adoptionform_adminview/:id", "destination": "/" },
+      { "source": "/adminpage", "destination": "/" },
+      { "source": "/success", "destination": "/" },
+      { "source": "/cancel", "destination": "/" },
+      { "source": "/(.*)", "destination": "/" }
     ]
   }
   
