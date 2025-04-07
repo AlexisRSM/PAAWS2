@@ -3,10 +3,11 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
+//Correçao RM março 25
+import bannerVideo from "../images/videos/PAAWS animated banner.mp4"
 
 
 function Home() {
-    const bannerVideo = "src/images/videos/PAAWS animated banner.mp4";
     const handler = () => {
     bannerVideo.forEach((video, key) => {
         video.pause();
