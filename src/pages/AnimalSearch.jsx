@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Dropdown from 'react-bootstrap/Dropdown';
+import thirdloadingcat from '../images/gifs/thirdloadingcat.gif';
 
 import FilterSection from '../components/FilterSection';
 import AnimalCard from '../components/RegularCard';
@@ -104,12 +105,12 @@ function AnimalSearch() {
 
     return (
         <>
-        <div className="pageHeader animalSearchHeader">
-            <h1>Our Pets</h1>
-            <p className="pageHeaderText">Check out these cuties</p>
-        </div>
-        <Container fluid>
-            {/* <div className="sortBy">
+            <div className="pageHeader animalSearchHeader">
+                <h1>Our Pets</h1>
+                <p className="pageHeaderText">Check out these cuties</p>
+            </div>
+            <Container fluid>
+                {/* <div className="sortBy">
                 
                 <label  htmlFor="sortOption">Sort by </label>
                 <select id="sortOption" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
@@ -119,33 +120,33 @@ function AnimalSearch() {
                 
                 </div> */}
 
-            <Row>
-                <Col lg="3">
-                    <FilterSection filters={filters} setFilters={setFilters} />
-                </Col>
-                <Col lg="9" ref={containerRef}>
-                    {loading ? ( // Display loading GIF while it fetches
-                        <div className="loading-container">
-                            <img src="/src/images/gifs/thirdloadingcat.gif" alt="Loading..." />
-                        </div>
-                    ) : (
-                        <Row>
-                            {filteredAnimals.length > 0 ? (
-                                filteredAnimals.map((animal) => (
-                                    <Col lg="4" key={animal.id}>
-                                        <AnimalCard animal={animal} />
+                <Row>
+                    <Col lg="3">
+                        <FilterSection filters={filters} setFilters={setFilters} />
+                    </Col>
+                    <Col lg="9" ref={containerRef}>
+                        {loading ? ( // Display loading GIF while it fetches
+                            <div className="loading-container">
+                                <img src={thirdloadingcat} alt="Loading..." />
+                            </div>
+                        ) : (
+                            <Row>
+                                {filteredAnimals.length > 0 ? (
+                                    filteredAnimals.map((animal) => (
+                                        <Col lg="4" key={animal.id}>
+                                            <AnimalCard animal={animal} />
+                                        </Col>
+                                    ))
+                                ) : (
+                                    <Col lg="9">
+                                        <p>No animals match the selected filters.</p>
                                     </Col>
-                                ))
-                            ) : (
-                                <Col lg="9">
-                                    <p>No animals match the selected filters.</p>
-                                </Col>
-                            )}
-                        </Row>
-                    )}
-                </Col>
-            </Row>
-        </Container>
+                                )}
+                            </Row>
+                        )}
+                    </Col>
+                </Row>
+            </Container>
         </>
     );
 }

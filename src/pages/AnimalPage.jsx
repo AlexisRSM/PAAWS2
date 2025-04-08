@@ -54,7 +54,7 @@ function AnimalPage() {
           <Col lg="7">
             <Card.Body className='animalPageDesc'>
               <Card.Title style={{ marginBottom: "1em" }}><h2> {animal.name || "Unknown Animal"} </h2></Card.Title>
-              <Card.Text className='animalPageText' style={{ marginBottom: "5em"}}>
+              <Card.Text className='animalPageText' style={{ marginBottom: "5em" }}>
                 <p><strong>Species:</strong> {animal.species || "Unknown"} </p>
                 <p><strong>Gender:</strong> {animal.gender || "Unknown"} </p>
                 <p><strong>Age:</strong> {animal.life_stage || "Unknown"} </p>
