@@ -7,6 +7,7 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 //Added by RM
 import { useAPI } from '../pages/Context/Context';
 import { useNavigate } from 'react-router-dom';
+import logo from '../images/PAAWS_transparentBG.png';
 
 
 let userIcon = <i className="fa-solid fa-user me-3" />;
@@ -28,7 +29,7 @@ function NavigationBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar NavigationBar p-0" sticky="top">
       <Container fluid className="navbarContainer">
-        <img src="/src/images/PAAWS_transparentBG.png" alt="PAAWS" className='PAAWSLogo' />
+        <img src={logo} alt="PAAWS" className='PAAWSLogo' />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto centerNavBar justifyContentBetween">

@@ -25,5 +25,5 @@ select:focus,
 button:focus,
 a:focus,
 option:focus {
-    cursor: url('../images/light_brown_paw.png'), auto !important;
+    cursor: url('../images/light_brown_paw.png') auto !important;
 }

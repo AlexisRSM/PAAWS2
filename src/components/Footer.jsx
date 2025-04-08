@@ -9,10 +9,10 @@ function Footer() {
     <Navbar collapseOnSelect expand="lg" className="footer mt-5" >
       <Container fluid>
         {/* <Image src="src/images/PAAWS footer image.png" alt='mountain range with trees at the foreground' className='footerImg' fluid />; */}
-          <Nav className="me-auto footerItem ps-2">
-            <Nav.Link>© All pawprints reserved by Alexis Mendes and Bárbara Ferreira</Nav.Link>
-            {/* <Nav.Link href="/FAQ">FAQ</Nav.Link> */}
-          </Nav>
+        <Nav className="me-auto footerItem ps-2">
+          <Nav.Link>© All pawprints reserved by Alexis Mendes</Nav.Link>
+          {/* <Nav.Link href="/FAQ">FAQ</Nav.Link> */}
+        </Nav>
       </Container>
     </Navbar>
   );
