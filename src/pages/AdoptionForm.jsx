@@ -124,10 +124,10 @@ function AdoptionForm() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="adoptionForm">
         <Row>
           <Col lg="6">
-            <Card className='adoptionFormCard' >
+            <Card className='adoptionFormCard'>
               <Card.Body>
                 <Card.Title>{animal.name}</Card.Title>
                 <Card.Text> {animal.life_stage} {animal.species} <br />

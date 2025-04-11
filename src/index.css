@@ -411,17 +411,37 @@ input:-webkit-autofill {
 }
 
 .callToAction {
-  margin: 5em 0em;
+  margin: 5em 0;
+  position: relative;
+  z-index: 1;
+}
+
+.callToAction .card {
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .callToActionTitle {
-  margin-bottom: 1em;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .callToActionText {
   font-size: 18px;
   line-height: 1.75;
-  text-align: justify;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.callToAction .primaryButton {
+  display: block;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
 }
 
 .contactUs {
@@ -667,53 +687,98 @@ input:-webkit-autofill {
 
 .animalPage {
   width: 90%;
-  margin: auto;
-  margin-top: 2em;
-  margin-bottom: 5em;
+  margin: 17vh auto 2rem auto; /* Add margin-top to account for navbar */
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .animalPageDesc {
   text-align: left;
-  padding-top: 0;
-}
-
-.animalPageBtn {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 1.5rem;
+  padding: 1.5rem;
+  height: 100%;
+  position: relative;
 }
 
 .animalPageText {
   color: #36382e;
+  margin-bottom: 4rem; /* Space for buttons */
+}
+
+.animalPageText p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.animalPageText strong {
+  display: inline-block;
+  min-width: 120px;
+}
+
+.animalPageBtn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+/* Image switcher styles */
+.imageSwitcher {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.imageSwitcher img {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imageControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .toAdoptionForm {
   background-color: #ffa69e;
-  padding: 3em;
+  padding: 2rem;
   color: #36382e;
+  text-align: center;
+  margin-top: 2rem;
+  border-radius: 8px;
 }
 
-.imageSwitcher img {
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
-  height: 70vh;
-  width: 100vh;
-  object-fit: cover;
-  
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animalPage {
+    width: 95%;
+    margin-top: 15vh;
+  }
+
+  .imageSwitcher img {
+    height: 40vh;
+  }
+
+  .animalPageDesc {
+    padding: 1rem;
+  }
+
+  .animalPageText {
+    margin-bottom: 5rem;
+  }
+
+  .animalPageBtn {
+    position: static;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
 }
 
-.imageSwitcher img.hidden {
-  opacity: 0;
-}
-
-/* .animalPageBtnL {
-  left: 0;
-}
-
-.animalPageBtnR {
-  right: 0;
-} */
+/* carouselBtn */
 
 .carouselBtn {
   background-color: white;
@@ -725,10 +790,6 @@ input:-webkit-autofill {
 .carouselBtn:active {
   background-color: #36382e;
   color: white
-}
-
-.imageControls {
-  margin: auto;
 }
 
 /* adoptionForm */
@@ -753,7 +814,8 @@ input:-webkit-autofill {
 .adminForm {
   width: 85%;
   margin: auto;
-  margin-top: 3em;
+  margin-top: 17vh;
+  padding: 1rem;
 }
 
 /* Estilos para o menu móvel */
@@ -889,4 +951,252 @@ input:-webkit-autofill {
 .loading-container img {
   max-width: 100%;
   height: auto;
+}
+
+/* Login Form Styles */
+.loginForm {
+  width: 90%;
+  max-width: 400px;
+  margin: 17vh auto 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Ajustes responsivos para o formulário */
+@media (min-width: 768px) {
+  .loginForm {
+    width: 30%;
+  }
+}
+
+/* Estilos para os campos de entrada */
+.loginForm .form-floating {
+  margin-bottom: 1rem;
+}
+
+.loginForm .form-control {
+  width: 100%;
+}
+
+/* Ajuste do link "Forgot Password" */
+.forgotPass {
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Profile and Personal Data Styles */
+.profileContainer,
+.personalDataForm {
+  width: 90%;
+  max-width: 800px;
+  margin: 17vh auto 2rem auto; /* Aumentar margin-top para ficar abaixo da navbar */
+  padding: 0 1rem;
+}
+
+/* Ajustes responsivos */
+@media (min-width: 768px) {
+  .personalDataForm {
+    width: 50%;
+  }
+}
+
+/* Estilos para os campos do formulário */
+.personalDataForm .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.personalDataForm .form-control {
+  width: 100%;
+}
+
+/* Ajustes para os botões */
+.personalDataForm .btn-container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Admin Pages Layout */
+.adminPageContainer {
+  margin-top: 17vh;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.adminFormContainer {
+  margin-top: 17vh;
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+.adoptionStatusContainer {
+  margin-top: 17vh;
+  padding: 1rem;
+}
+
+/* Ajustes específicos para AdminDelete */
+.adminDeleteContainer {
+  margin-top: 17vh;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  .adminFormContainer,
+  .adminDeleteContainer {
+    width: 95%;
+    padding: 0.5rem;
+  }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .adminPageContainer {
+    width: 95%;
+    padding: 0.5rem;
+  }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .adminForm {
+    width: 95%;
+    padding: 0.5rem;
+  }
+}
+
+/* Animal Data Styling */
+.animalData {
+  background-color: rgba(54,56,46, 0.05);
+  padding
+}
+
+/* About us page responsive fixes */
+@media (max-width: 768px) {
+  .aboutUsDesc,
+  .motivationText {
+    margin: 2em 1.5em;
+  }
+
+  .ourStory,
+  .ourMission {
+    padding: 2em;
+  }
+
+  .howItWorks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .howItWorksHeader,
+  .howItWorksOne,
+  .howItWorksTwo,
+  .howItWorksThree {
+    padding: 2em;
+    text-align: center;
+  }
+
+  .contactUs {
+    padding: 1.5em;
+  }
+
+  .contactUsText {
+    padding: 1em;
+    font-size: 18px;
+  }
+
+  .socialMediaIcons {
+    padding: 0 2em;
+    margin-bottom: 1.5em;
+  }
+
+  .aboutUsPaawsLogo {
+    padding: 2em;
+  }
+
+  .aboutUsPaawsLogo img {
+    max-width: 80%;
+    height: auto;
+  }
+}
+
+/* Adoption Form Container */
+.adoptionFormCard {
+  width: 65%;
+  height: 30vh;
+  margin: auto;
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.adminForm {
+  width: 85%;
+  margin: auto;
+  margin-top: 17vh; /* Match other admin containers */
+  padding: 1rem;
+}
+
+/* Add specific styles for adoption form container */
+.adoptionForm {
+  margin-top: 17vh; /* Add margin to account for navbar */
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .adoptionForm {
+    width: 95%;
+    padding: 0.5rem;
+  }
+  
+  .adoptionFormCard {
+    width: 90%;
+    margin-top: 1em;
+  }
+}
+
+/* Admin View Adoption Form */
+.adminFormView {
+  margin-top: 17vh;
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.adminFormView .card {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.adminFormView .answer {
+  color: #36382e;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .adminFormView {
+    width: 95%;
+    padding: 0.5rem;
+  }
+  
+  .adminFormView .card {
+    width: 90% !important; /* Override inline styles */
+    margin: 1rem auto !important;
+  }
 }

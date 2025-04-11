@@ -45,30 +45,30 @@ function AnimalPage() {
   /* add carousel for images!! */
   return (
     <>
-      <Card className='animalPage' key={animal}>
+      <Card className='animalPage'>
         <Row>
           <Col lg="5">
-            {/*  <Card.Img className="animalPageImg" src={animal.images[0].image_url} alt="animal picture" /> */}
             <ImageSwitcher images={animal.images} />
           </Col>
           <Col lg="7">
             <Card.Body className='animalPageDesc'>
-              <Card.Title style={{ marginBottom: "1em" }}><h2> {animal.name || "Unknown Animal"} </h2></Card.Title>
-              <Card.Text className='animalPageText' style={{ marginBottom: "5em" }}>
-                <p><strong>Species:</strong> {animal.species || "Unknown"} </p>
-                <p><strong>Gender:</strong> {animal.gender || "Unknown"} </p>
-                <p><strong>Age:</strong> {animal.life_stage || "Unknown"} </p>
+              <Card.Title>
+                <h2 className="mb-4">{animal.name || "Unknown Animal"}</h2>
+              </Card.Title>
+              <div className='animalPageText'>
+                <p><strong>Species:</strong> {animal.species || "Unknown"}</p>
+                <p><strong>Gender:</strong> {animal.gender || "Unknown"}</p>
+                <p><strong>Age:</strong> {animal.life_stage || "Unknown"}</p>
                 <p><strong>Weight:</strong> {`${animal.weight} kg` || "Unknown"}</p>
                 <p><strong>Breed:</strong> {animal.breed || "Unknown"}</p>
                 <p><strong>Location:</strong> {animal.location || "Unknown"}</p>
                 <p><strong>Known illnesses:</strong> {animal.known_illness || "Unknown"}</p>
-                <strong>Description:</strong> {animal.description || "Unknown"}
-              </Card.Text>
-              <div className="animalPageBtn" >
+                <p><strong>Description:</strong> {animal.description || "Unknown"}</p>
+              </div>
+              <div className="animalPageBtn">
                 <Button
-                  className='primaryButton'
-                  style={{ marginRight: "1rem" }}
-                  onClick={() => setShowSponsorModal(true)} // Open modal on click
+                  className='primaryButton me-2'
+                  onClick={() => setShowSponsorModal(true)}
                 >
                   Sponsor
                 </Button>
@@ -88,7 +88,6 @@ function AnimalPage() {
         show={showSponsorModal}
         onHide={() => setShowSponsorModal(false)}
         size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
@@ -99,7 +98,6 @@ function AnimalPage() {
         </Modal.Body>
       </Modal>
 
-      {/* link to adoption form */}
       <div className="toAdoptionForm">
         <h4>Interested in adopting instead?</h4>
         <p>Check out our <Link to={`/adoptionform/${animal.id}`} className='nonBtnLinkTwo'>form</Link></p>

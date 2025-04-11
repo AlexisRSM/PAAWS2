@@ -39,14 +39,14 @@ function AdoptionFormView() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="adminFormView">
         <Row>
           <Col lg="6">
-            <Card style={{ width: "60%", margin: "auto", marginTop: "1rem" }}>
+            <Card>
               <Card.Body>
                 <Card.Title>{form.animal_name}</Card.Title>
                 <Card.Text>ID: {form.id}</Card.Text>
-                <Link to={`/animalpage/${form.animal_id}`} >
+                <Link to={`/animalpage/${form.animal_id}`}>
                   <Button className='primaryButton'>
                     More
                   </Button>
@@ -55,11 +55,11 @@ function AdoptionFormView() {
             </Card>
           </Col>
           <Col lg="6">
-            <Card style={{ width: "60%", margin: "auto", marginTop: "1rem" }}>
+            <Card>
               <Card.Body>
                 <Card.Title>{form.first_name}</Card.Title>
                 <Card.Text>Email: {form.email}</Card.Text>
-                <Link to="/userprofile" >
+                <Link to="/userprofile">
                   <Button className='primaryButton'>
                     Profile
                   </Button>
@@ -69,53 +69,57 @@ function AdoptionFormView() {
           </Col>
         </Row>
 
-        <Card style={{ width: "80%", margin: "auto", marginTop: "1rem" }}>
-          <div style={{ display: "flex" }}>
-            <div className="m-3" style={{ width: "50%" }}>
-              <p>Phone number:</p>
-              <p>{form.phone_number}</p>
+        <Card>
+          <Card.Body>
+            <div className="d-flex flex-wrap">
+              <div className="m-3 flex-grow-1">
+                <p><strong>Phone number:</strong></p>
+                <p className="answer">{form.phone_number}</p>
+              </div>
+              <div className="m-3 flex-grow-1">
+                <p><strong>First time having a pet?</strong></p>
+                <p className="answer">{form.first_time_adopting ? 'Yes' : 'No'}</p>
+              </div>
             </div>
-            <div className="m-3" style={{ width: "50%" }}>
-              <p>Is this your first time having a pet? </p>
-              <p className='answer'> {form.first_time_adopting ? 'Yes' : 'No'}</p>
+
+            <div className="m-3">
+              <p><strong>Current pets:</strong></p>
+              <p className="answer">{form.already_have_pets || "NA"}</p>
             </div>
-          </div>
 
-          <div className="m-3">
-            <p>Do you already have any pets currently? If so, how many? </p>
-            <p className='answer'> {form.already_have_pets || "NA"}</p>
-          </div>
+            <div className="m-3">
+              <p><strong>Current pets description:</strong></p>
+              <p className="answer">{form.current_pets_description || "NA"}</p>
+            </div>
 
-          <div className="m-3">
-            <p>Please describe your current pets in detail.</p>
-            <p className='answer'>{form.current_pets_description || "NA"}</p>
-          </div>
+            <div className="m-3">
+              <p><strong>Interest reason:</strong></p>
+              <p className="answer">{form.interest_reason}</p>
+            </div>
 
-          <div className="m-3">
-            <p>Why are you interested in this particular animal?</p>
-            <p className='answer'>{form.interest_reason}</p>
-          </div>
+            <div className="m-3">
+              <p><strong>Plan to meet animal:</strong></p>
+              <p className="answer">{form.met_animal ? 'Yes' : 'No'}</p>
+            </div>
 
-          <div className="m-3">
-            <p>Do you plan to meet this animal before the adoption or have you already met them?</p>
-            <p className='answer'> {form.met_animal ? 'Yes' : 'No'}</p>
-          </div>
+            <div className="m-3">
+              <p><strong>Space for play:</strong></p>
+              <p className="answer">{form.space_for_play ? 'Yes' : 'No'}</p>
+            </div>
 
-          <div className="m-3">
-            <p>Will the animal have space to play/be entertained? </p>
-            <p className='answer'>{form.space_for_play ? 'Yes' : 'No'}</p>
-          </div>
+            <div className="m-3">
+              <p><strong>Can front vet bills:</strong></p>
+              <p className="answer">{form.able_to_front_vet_bills ? 'Yes' : 'No'}</p>
+            </div>
 
-          <div className="m-3">
-            <p>Will you be able to front initial vet bills, like neutering, as per the shelter's stipulations? </p>
-            <p className='answer'> {form.able_to_front_vet_bills ? 'Yes' : 'No'}</p>
-          </div>
-
-          <Link to="/adoptionstatus">
-            <Button className='tertiaryButton'>
-              Return
-            </Button>
-          </Link>
+            <div className="text-center mt-4">
+              <Link to="/adoptionstatus">
+                <Button className='tertiaryButton'>
+                  Return
+                </Button>
+              </Link>
+            </div>
+          </Card.Body>
         </Card>
       </Container>
     </>

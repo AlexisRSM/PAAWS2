@@ -68,15 +68,17 @@ function AboutUs() {
 
 
                 {/* this card is jumping on top of previous section in smaller viewports and ruining my blood pressure */}
-                <Row className="callToAction" >
+                <Row className="callToAction">
                     <Col lg="12">
-                        <Card style={{ width: '35%', margin: "auto" }}>
+                        <Card>
                             <Card.Body>
                                 <h1 className="callToActionTitle">Join us</h1>
                                 <Card.Text className="callToActionText">
                                     We invite you to explore the animals waiting for a loving home or sponsor one that touches your heart. Together, we can build a better world for animals—one adoption, one sponsorship, one act of kindness at a time.
                                 </Card.Text>
-                                <Button className="primaryButton" href="/ourpets">Check out our pets</Button>
+                                <Button className="primaryButton" href="/ourpets">
+                                    Check out our pets
+                                </Button>
                             </Card.Body>
                         </Card>
                     </Col>

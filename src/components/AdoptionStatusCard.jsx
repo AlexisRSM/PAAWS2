@@ -30,18 +30,23 @@ const AdoptionStatusCard = ({ adoption, onApprove, onReject, onViewForm, isUpdat
           ID: {adoption.animal.id || "Unknown"}
         </Card.Text>
         <Card.Text>Status: {adoption.adoption_status}</Card.Text>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ 
+          display: "flex", 
+          justifyContent: "center", // Center horizontally
+          gap: "1rem", // Keep the spacing between buttons
+          width: "100%" // Ensure the container takes full width
+        }}>
           <Button
             className='primaryButton'
             onClick={onApprove}
-            disabled={isUpdating}  // Disable the button when updating
+            disabled={isUpdating}
           >
             {isUpdating ? <Spinner as="span" animation="border" size="sm" /> : <i className="fa-solid fa-check" />}
           </Button>
           <Button
             className='secondaryButton'
             onClick={onReject}
-            disabled={isUpdating}  // Disable the button when updating
+            disabled={isUpdating}
           >
             {isUpdating ? <Spinner as="span" animation="border" size="sm" /> : <i className="fa-solid fa-x" />}
           </Button>

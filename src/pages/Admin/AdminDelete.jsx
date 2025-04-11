@@ -71,7 +71,7 @@ function AdminDelete() {
   };
 
   return (
-    <>
+    <div className="adminDeleteContainer">
       <div className='container'>
         <div className='row justify-content-center py-3'>
           <div className='col-md-6'>
@@ -108,45 +108,78 @@ function AdminDelete() {
               </Carousel>
 
               <div className="animalData mt-3">
-                <p>ID: {animalData.id}</p>
-                <p>Name: {animalData.name}</p>
-                <p>Species: {animalData.species}</p>
-                <p>Gender: {animalData.gender}</p>
-                <p>Life stage: {animalData.life_stage}</p>
-                <p>Weight: {animalData.weight}</p>
-                <p>Breed: {animalData.breed}</p>
-                <p>Location: {animalData.location}</p> {/* fixed */}
-                <p>Known illnesses: {animalData.known_illness || 'NA'}</p>
-                <p>Adoption status: {animalData.adoption_status || 'NA'}</p>
-                <p>Description: {animalData.description || 'NA'}</p>
+                <div className="animalDataField">
+                  <strong>ID:</strong> {animalData.id}
+                </div>
+                <div className="animalDataField">
+                  <strong>Name:</strong> {animalData.name}
+                </div>
+                <div className="animalDataField">
+                  <strong>Species:</strong> {animalData.species}
+                </div>
+                <div className="animalDataField">
+                  <strong>Gender:</strong> {animalData.gender}
+                </div>
+                <div className="animalDataField">
+                  <strong>Life stage:</strong> {animalData.life_stage}
+                </div>
+                <div className="animalDataField">
+                  <strong>Weight:</strong> {animalData.weight}
+                </div>
+                <div className="animalDataField">
+                  <strong>Breed:</strong> {animalData.breed}
+                </div>
+                <div className="animalDataField">
+                  <strong>Location:</strong> {animalData.location}
+                </div>
+                <div className="animalDataField">
+                  <strong>Known illnesses:</strong> {animalData.known_illness || 'NA'}
+                </div>
+                <div className="animalDataField">
+                  <strong>Adoption status:</strong> {animalData.adoption_status || 'NA'}
+                </div>
+                <div className="animalDataField">
+                  <strong>Description:</strong> {animalData.description || 'NA'}
+                </div>
               </div>
             </div>
           </div>
         )}
 
         <div className='row justify-content-center'>
-          <div className='col-md-6 d-flex justify-content-between'>
+          <div className='col-md-6 d-flex justify-content-between' style={{ gap: '1rem' }}>
             <Button
               className='secondaryButton'
               onClick={handleDeleteAnimal}
-            > {/* why the heck are you so tall */}
+              style={{ flex: '1' }}
+            >
               Delete animal
-            </Button>
-            <Button href="/adminpage" className='tertiaryButton'>
-              Return
             </Button>
             <Button
               className='tertiaryButton'
               onClick={navigateToEdit}
+              style={{ flex: '1' }}
             >
               Want to Edit Instead?
             </Button>
           </div>
         </div>
 
+        {/* Separate container for centered Return button */}
+        <div className='row justify-content-center mt-4'>
+          <div className='col-md-6 text-center'>
+            <Button 
+              href="/adminpage" 
+              className='tertiaryButton'
+            >
+              Return
+            </Button>
+          </div>
+        </div>
+
         {error && <p className='text-danger text-center'>{error}</p>}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -71,7 +71,7 @@ function AdoptionStatus() {
   };
 
   return (
-    <>
+    <div className="adoptionStatusContainer">
       <Row >
         {error && <p className="text-danger">{error}</p>}
         {loading ? (
@@ -100,7 +100,7 @@ function AdoptionStatus() {
           <Button href='/adminpage' className=" mt-5 tertiaryButton">Return</Button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

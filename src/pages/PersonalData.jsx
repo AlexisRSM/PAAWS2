@@ -88,7 +88,7 @@ function PersonalData() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit} style={{ width: "50%", margin: "auto" }}>
+      <Form onSubmit={handleSubmit} className="personalDataForm">
         <Form.Group className="m-3" controlId="first_name">
           <Form.Label className='personalDataLabel'>First Name</Form.Label>
           <Form.Control

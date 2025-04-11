@@ -14,6 +14,7 @@ import SponsoredCard from "../components/SponsoredCard";
 import React, { useEffect, useState } from 'react';
 import { useAPI } from '../pages/Context/Context';
 import newloadingcato from '../images/gifs/newloadingcato.gif'
+import { Container } from 'react-bootstrap';
 
 //omfg You have no idea it took me like 4 hrs--- 🥲 its working
 //missing check when have connections in db sponsored and adoption processes
@@ -81,10 +82,10 @@ function UserProfile() {
     }
 
     return (
-        <>
+        <Container fluid className="profileContainer">
             <div className="pageHeader userProfileHeader">
                 <h1>Welcome back, {user ? user.first_name : 'User'}!</h1>
-                <p className="pageHeaderText">You have contributed €{user ? user.total_spent : 0} so far. </p>
+                <p className="pageHeaderText">You have contributed {user ? user.total_spent : 0}€ so far. </p>
             </div>
             <h4 className='userHeader'>Your sponsored pets</h4>
             <div className="scrollingWrapper">
@@ -98,7 +99,7 @@ function UserProfile() {
                     <AdoptionCard key={index} process={process} />
                 ))}
             </div>
-        </>
+        </Container>
     );
 }
 

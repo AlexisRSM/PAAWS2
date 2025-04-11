@@ -70,78 +70,75 @@ function Login() {
     }
   };
 
-  return (<>
+  return (
     <Container fluid>
-
-    <Form onSubmit={handleSubmit} className='my-3'style={{ width: "30%", margin: "auto" }}>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control
-          type="email"
-          placeholder="name@example.com"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          style={{ color: '#000' }} // Add this line
-        />
-      </FloatingLabel>
-
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          style={{ color: '#000' }} // Add this line
-          />
-      </FloatingLabel>
-
-      <Link onClick={handleShow} className='nonBtnLink forgotPass' >
-        <p style={{ marginTop: "1em"}}>Forgot your password?</p>
-      </Link>
-
-      {error && <p className="text-danger">{error}</p>}
-
-      <Button className='primaryButton m-2' variant="success" type="submit" disabled={loading}>
-        {loading ? 'Logging in...' : 'Submit'}
-      </Button>
-
-      <p style={{ marginTop: "1em"}}>Don't have an account? <Link to='/register' className='nonBtnLink'>Register</Link>!</p>
-    </Form>
-    </Container>
-
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Email confirmation</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>We'll send you an email with a link to reset your password.</p>
-        <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+      <Form onSubmit={handleSubmit} className='loginForm'>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
           <Form.Control
             type="email"
             placeholder="name@example.com"
-            value={resetEmail}
-            onChange={(e) => setResetEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            style={{ color: '#000' }}
           />
         </FloatingLabel>
-        {resetMessage && <p className="text-info">{resetMessage}</p>}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button className='secondaryButton' onClick={handleClose}>
-          Close
-        </Button>
-        <Button className="primaryButton" onClick={() => { handlePasswordReset(); handleClose(); }}>
-          Send
-        </Button>
-      </Modal.Footer>
-    </Modal>
 
-  </>
+        <FloatingLabel controlId="floatingPassword" label="Password">
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            style={{ color: '#000' }}
+          />
+        </FloatingLabel>
+
+        <Link onClick={handleShow} className='nonBtnLink forgotPass'>
+          <p>Forgot your password?</p>
+        </Link>
+
+        {error && <p className="text-danger">{error}</p>}
+
+        <Button className='primaryButton m-2' variant="success" type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Submit'}
+        </Button>
+
+        <p>Don't have an account? <Link to='/register' className='nonBtnLink'>Register</Link>!</p>
+      </Form>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Email confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>We'll send you an email with a link to reset your password.</p>
+          <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+            <Form.Control
+              type="email"
+              placeholder="name@example.com"
+              value={resetEmail}
+              onChange={(e) => setResetEmail(e.target.value)}
+            />
+          </FloatingLabel>
+          {resetMessage && <p className="text-info">{resetMessage}</p>}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className='secondaryButton' onClick={handleClose}>
+            Close
+          </Button>
+          <Button className="primaryButton" onClick={() => { handlePasswordReset(); handleClose(); }}>
+            Send
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </Container>
   );
 }
 
