@@ -1,5 +1,6 @@
 // landing page with welcoming + news carousel banner, and at least 3 highlights featuring "Our mission/About us", "Success stories" & "Get to know our animals"
 
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
@@ -7,27 +8,30 @@ import bannerVideo from '../images/videos/PAAWS animated banner.mp4';
 import pawprintsImage from '../images/paws and drawings.png';
 
 function Home() {
-    const handler = () => {
-        bannerVideo.forEach((video, key) => {
-            video.pause();
-            video.currentTime = 0;
-            video.load();
-        })
-    };
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const handler = () => {
+        if (!isMobile) {
+            bannerVideo.forEach((video, key) => {
+                video.pause();
+                video.currentTime = 0;
+                video.load();
+            });
+        }
+    };
 
     return (
         <>
             <div>
-                {/* <Carousel data-bs-theme="dark" className='homeBanner'>
-                <Carousel.Item interval={8000}>
-                    <video
-                    className="d-block w-100"
-                    src="src/images/videos/PAAWS animated banner.mp4"
-                    alt="a cat and a dog looking to the front with text saying impossible to resist that face"
-                    autoplay loop muted
-                    />
-                </Carousel.Item> */}
                 <Carousel
                     controls={false}
                     fade={true}
@@ -37,24 +41,26 @@ function Home() {
                     onSlid={handler}
                 >
                     <Carousel.Item>
-                        <video
-                            className="bannerVideo d-block w-100"
-                            src={bannerVideo}
-                            autoPlay
-                            /* loop */
-                            muted
-                            loading="lazy"
-                            alt="dog's muzzle popping into the page with the text sniff sniff, smells like a good human, PAAWS, sponsor and adopt"
-                        />
+                        {isMobile ? (
+                            // Imagem estática para dispositivos móveis
+                            <img
+                                className="d-block w-100 mobileBanner"
+                                src="/src/images/PAAWS banner_dark version.png"
+                                alt="PAAWS banner"
+                            />
+                        ) : (
+                            // Vídeo para desktop
+                            <video
+                                className="bannerVideo d-block w-100"
+                                src={bannerVideo}
+                                autoPlay
+                                muted
+                                loading="lazy"
+                                playsInline // Importante para iOS
+                                alt="dog's muzzle popping into the page with the text sniff sniff, smells like a good human, PAAWS, sponsor and adopt"
+                            />
+                        )}
                     </Carousel.Item>
-                    {/*                 <Carousel.Item>
-                    <img
-                    className="slider-video"
-                    src="/src/images/PAAWS banner_dark version.png"
-                    loading="lazy"
-                    alt="a cat and a dog looking to the front with text saying impossible to resist that face"
-                    />
-            </Carousel.Item> */}
                 </Carousel>
             </div>
 

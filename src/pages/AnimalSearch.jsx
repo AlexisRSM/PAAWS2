@@ -109,40 +109,32 @@ function AnimalSearch() {
                 <h1>Our Pets</h1>
                 <p className="pageHeaderText">Check out these cuties</p>
             </div>
-            <Container fluid>
-                {/* <div className="sortBy">
-                
-                <label  htmlFor="sortOption">Sort by </label>
-                <select id="sortOption" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-                    <option value="name">Name</option>
-                    <option value="age">Age</option>
-                </select>
-                
-                </div> */}
-
+            <Container fluid className="animalSearchContainer">
                 <Row>
-                    <Col lg="3">
+                    <Col lg={3}>
                         <FilterSection filters={filters} setFilters={setFilters} />
                     </Col>
-                    <Col lg="9" ref={containerRef}>
-                        {loading ? ( // Display loading GIF while it fetches
+                    <Col lg={9} ref={containerRef}>
+                        {loading ? (
                             <div className="loading-container">
                                 <img src={thirdloadingcat} alt="Loading..." />
                             </div>
                         ) : (
-                            <Row>
-                                {filteredAnimals.length > 0 ? (
-                                    filteredAnimals.map((animal) => (
-                                        <Col lg="4" key={animal.id}>
-                                            <AnimalCard animal={animal} />
+                            <div className="animalGrid">
+                                <Row>
+                                    {filteredAnimals.length > 0 ? (
+                                        filteredAnimals.map((animal) => (
+                                            <Col xs={12} sm={6} md={6} lg={4} key={animal.id} className="animalCard">
+                                                <AnimalCard animal={animal} />
+                                            </Col>
+                                        ))
+                                    ) : (
+                                        <Col>
+                                            <p>No animals match the selected filters.</p>
                                         </Col>
-                                    ))
-                                ) : (
-                                    <Col lg="9">
-                                        <p>No animals match the selected filters.</p>
-                                    </Col>
-                                )}
-                            </Row>
+                                    )}
+                                </Row>
+                            </div>
                         )}
                     </Col>
                 </Row>

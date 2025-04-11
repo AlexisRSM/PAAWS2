@@ -24,25 +24,29 @@ function AnimalCard({ animal }) {
   const imageUrl = findValidImageUrl(animal.images);
 
   return (
-    <Card>
+    <Card className="h-100">
       <Card.Img
         variant="top"
         src={imageUrl}
         alt={animal.name}
         style={{ width: "100%", height: "25vh", objectFit: "cover" }}
       />
-      <Card.Body>
-        <Card.Title>{animal.name || "Unknown Animal"}</Card.Title>
-        <Card.Text>
-          Species: {animal.species || "Unknown"} <br />
-          Gender: {animal.gender || "Unknown"} <br />
-          Age: {animal.life_stage || "Unknown"} <br />
-        </Card.Text>
-        <Link to={`/animalpage/${animal.id}`} state={{ animal }} > {/* Added Satte to link to pass prop animal */}
-          <Button className='primaryButton'>
-            More
-          </Button>
-        </Link>
+      <Card.Body className="d-flex flex-column">
+        <div>
+          <Card.Title>{animal.name || "Unknown Animal"}</Card.Title>
+          <Card.Text>
+            Species: {animal.species || "Unknown"} <br />
+            Gender: {animal.gender || "Unknown"} <br />
+            Age: {animal.life_stage || "Unknown"} <br />
+          </Card.Text>
+        </div>
+        <div className="mt-auto">
+          <Link to={`/animalpage/${animal.id}`} state={{ animal }}>
+            <Button className='primaryButton w-100'>
+              More
+            </Button>
+          </Link>
+        </div>
       </Card.Body>
     </Card>
   );

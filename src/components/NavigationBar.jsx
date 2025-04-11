@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-//Added by RM
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Link } from 'react-router-dom';
 import { useAPI } from '../pages/Context/Context';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/PAAWS_transparentBG.png';
-
-
-let userIcon = <i className="fa-solid fa-user me-3" />;
+import { Button } from 'react-bootstrap';
 
 function NavigationBar() {
-  const { logoutUser, user } = useAPI(); // Get logout function and user information from context
-  const navigate = useNavigate(); // Hook for redirection
-  //kiling bugs
-  console.log(user)
+  const { logoutUser, user } = useAPI();
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const toggleMenu = () => setShow(!show);
+
   const handleLogout = async () => {
     try {
-      await logoutUser(); // Perform logout
-      navigate('/'); // Redirect to home after logout
+      await logoutUser();
+      navigate('/');
+      setShow(false);
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -29,9 +30,55 @@ function NavigationBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="navbar NavigationBar p-0" sticky="top">
       <Container fluid className="navbarContainer">
-        <img src={logo} alt="PAAWS" className='PAAWSLogo' />
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Link to="/" className="logoLink">
+          <img src={logo} alt="PAAWS" className='PAAWSLogo' />
+        </Link>
+
+        {/* Botão do menu agora funciona como toggle */}
+        <Button 
+          variant="link" 
+          onClick={toggleMenu} 
+          className={`d-lg-none menuToggle ${show ? 'active' : ''}`}
+          aria-expanded={show}
+        >
+          <i className={`fas ${show ? 'fa-times' : 'fa-bars'}`}></i>
+        </Button>
+
+        {/* Menu lateral */}
+        <Offcanvas 
+          show={show} 
+          onHide={toggleMenu} 
+          placement="end" 
+          className="d-lg-none mobileMenu"
+          backdrop={true}
+        >
+          <Offcanvas.Body>
+            <Nav className="flex-column">
+              <Nav.Link href="/" className='navbarItem' onClick={toggleMenu}>Home</Nav.Link>
+              <Nav.Link href="/ourpets" className='navbarItem' onClick={toggleMenu}>Our Pets</Nav.Link>
+              <Nav.Link href="/aboutus" className='navbarItem' onClick={toggleMenu}>About Us</Nav.Link>
+              <Nav.Link href="/successstories" className='navbarItem' onClick={toggleMenu}>Success Stories</Nav.Link>
+              
+              {user ? (
+                <>
+                  <Nav.Link href="/userprofile" onClick={toggleMenu}>Profile</Nav.Link>
+                  <Nav.Link href="/personaldata" onClick={toggleMenu}>Personal Data</Nav.Link>
+                  {user.is_admin && (
+                    <Nav.Link href="/adminpage" onClick={toggleMenu}>Admin</Nav.Link>
+                  )}
+                  <Nav.Link onClick={() => { handleLogout(); toggleMenu(); }}>Logout</Nav.Link>
+                </>
+              ) : (
+                <Nav.Link href="/login" className='login' onClick={toggleMenu}>
+                  Log in
+                </Nav.Link>
+              )}
+            </Nav>
+          </Offcanvas.Body>
+        </Offcanvas>
+
+        {/* Menu normal para telas grandes */}
+        <div className="d-none d-lg-flex w-100">
           <Nav className="me-auto centerNavBar justifyContentBetween">
             <Nav.Link href="/" className='navbarItem mx-2'>Home</Nav.Link>
             <Nav.Link href="/ourpets" className='navbarItem mx-2'>Our Pets</Nav.Link>
@@ -56,7 +103,7 @@ function NavigationBar() {
               </Nav.Link>
             )}
           </Nav>
-        </Navbar.Collapse>
+        </div>
       </Container>
     </Navbar>
   );
