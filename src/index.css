@@ -961,7 +961,7 @@ input:-webkit-autofill {
   padding: 0 1rem;
 }
 
-/* Ajustes responsivos para o formulário */
+/* FIX: Ajuste de margin-top para garantir que o formulário de login fique visível abaixo da navbar fixa. */
 @media (min-width: 768px) {
   .loginForm {
     width: 30%;
