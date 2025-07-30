@@ -18,5 +18,6 @@ jobs:
           cd ~/dockers/paaws-frontend/PAAWS2
           npm install
           npm run build
+          docker compose down           # <- Para evitar conflito com porta 3000
           docker compose build --no-cache
           docker compose up -d
