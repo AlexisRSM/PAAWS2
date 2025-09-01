@@ -6,6 +6,7 @@ import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 import bannerVideo from '../images/videos/PAAWS animated banner.mp4';
 import pawprintsImage from '../images/paws and drawings.png';
+import bannerGif from '../images/gifs/bannergif.gif';
 
 function Home() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -42,10 +43,10 @@ function Home() {
                 >
                     <Carousel.Item>
                         {isMobile ? (
-                            // Imagem estática para dispositivos móveis
+                            // GIF estático otimizado para dispositivos móveis
                             <img
                                 className="d-block w-100 mobileBanner"
-                                src="/src/images/PAAWS banner_dark version.png"
+                                src={bannerGif}
                                 alt="PAAWS banner"
                             />
                         ) : (
