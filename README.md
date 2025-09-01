@@ -1,102 +1,109 @@
-# PAAWS Frontend
+# PAAWS Frontend — Developer README
 
-This repository contains the frontend for PAAWS — a community-driven pet adoption and animal welfare platform. The frontend is built with React and Vite and is designed to be served as a static site via Nginx in production or run in development mode with Vite.
+This document is written for developers who will read, extend or deploy the PAAWS frontend.
 
-- Framework: React
-- Bundler / Dev server: Vite
-- Styling: Bootstrap
-- Assets: images, GIFs and a short animated banner video
+Overview
+--------
+The frontend is a React single-page application built with Vite. Production output is a static site in `PAAWS2/dist/` served by an Nginx container (see `docker-compose.yml`). The app demonstrates responsive UI, asset handling (images/GIFs/video) and a small Docker-based static deploy.
 
-## Table of Contents
+Architecture and key decisions
+--------------------------------
+- Build tool: **Vite** — chosen for fast dev server and modern bundling.
+- UI: **React** + **Bootstrap 5**.
+- Assets: Desktop banner is an MP4 video; mobile uses an imported GIF to avoid autoplay and cross-browser mobile issues.
+- Deployment: static `dist` served by Nginx in Docker for simple hosting.
 
-- Installation
-- Development
-- Production build and Docker
-- Project structure
-- Contributing
-- License
+Repository layout (important paths)
+----------------------------------
+- `PAAWS2/` — frontend project
+  - `src/` — source code
+    - `pages/` (e.g. `Home.jsx`) — page-level components
+    - `components/` — reusable UI components
+    - `images/` — images, `gifs/` and `videos/`
+  - `dist/` — production build output
+  - `package.json` — scripts & deps
+- `docker-compose.yml` — mounts `PAAWS2/dist` into Nginx container (default host:container port `3000:80`)
 
-## Installation
+Important files to review
+-------------------------
+- `PAAWS2/src/pages/Home.jsx` — landing page; handles banner selection (video vs GIF) and contains the `isMobile` detection.
+- `PAAWS2/src/images/gifs/` — GIFs used by the site. GIFs must be imported in code to be included by Vite.
+- `docker-compose.yml` — deployment mapping; change host port on the left side to avoid conflicts.
 
+Development
+-----------
 Requirements
 - Node.js (v18+ recommended)
 - npm or yarn
-- Docker & Docker Compose (for production static site with Nginx)
 
-Install dependencies:
+Install and run:
 
 ```bash
-cd /path/to/paaws-frontend/PAAWS2
+cd PAAWS2
 npm ci
-```
-
-If `npm ci` fails (e.g., package-lock mismatch), run `npm install`.
-
-## Development
-
-Run the dev server (Vite):
-
-```bash
 npm run dev
 ```
 
-By default Vite serves on port `5173`. To run on port `3000` explicitly:
+Notes
+- Vite default dev server port: `5173`. To use `3000` for parity with production: `npm run dev -- --port 3000` or `PORT=3000 npm run dev`.
+- When editing assets that should be included in `dist`, import them in JS/JSX rather than using absolute paths.
 
-```bash
-npm run dev -- --port 3000
-# or
-PORT=3000 npm run dev
-```
-
-Open `http://localhost:5173` (or the port you configured) to view the app.
-
-## Production build and Docker
-
-Build the production assets:
-
+Building for production
+-----------------------
 ```bash
 cd PAAWS2
 npm run build
 ```
 
-To serve the built `dist` folder with Nginx via Docker Compose, the repository includes a `docker-compose.yml` that maps `3000:80` by default. Start the service with:
+Verify output in `PAAWS2/dist` — hashed asset filenames will be in `dist/assets`.
 
+Serve with Docker (static)
+--------------------------
 ```bash
 docker compose up -d paaws-frontend
 ```
+This maps host port `3000` to container port `80` by default. Confirm with `docker ps`.
 
-Then open `http://localhost:3000` to view the site.
+If you change site assets, rebuild (`npm run build`) and restart the container. If Nginx serves stale content, run:
 
-If another service is using `3000`, change the host port mapping in `docker-compose.yml` or stop the conflicting service.
+```bash
+docker compose rm -f paaws-frontend && docker compose up -d --build paaws-frontend
+```
 
-## Project structure
+Asset handling gotchas
+---------------------
+- Vite processes imported assets and copies them into `dist/assets` with hashing. Do `import bannerGif from '../images/gifs/bannergif.gif'` in `Home.jsx` to include the GIF in the build.
+- Absolute paths like `/src/images/...` are not processed by Vite and will not appear in `dist` automatically.
 
-- `PAAWS2/src/` — source code (React components, pages, images, videos)
-- `PAAWS2/dist/` — production build output
-- `PAAWS2/src/images/` — static images and GIFs used in the app
-- `PAAWS2/src/images/videos/` — banner video used on desktop
-- `docker-compose.yml` — simple Nginx service to serve `PAAWS2/dist`
+Troubleshooting & tips
+----------------------
+- If the app is not reachable on `http://localhost:3000`, check `docker ps` to verify `paaws_frontend` status and port mapping.
+- Use `ss -ltnp | grep :3000` to check if a host process blocks port `3000`.
+- Browser caching can mask asset updates; test with an incognito window or clear cache.
 
-Important files:
-- `PAAWS2/src/pages/Home.jsx` — landing page component that serves the banner; in mobile it will serve a GIF and on desktop the video
-- `PAAWS2/src/images/gifs/` — folder for GIFs; ensure referenced images are imported in code so Vite bundles them into the `dist` output
+Scripts (from package.json)
+---------------------------
+- `dev` — `vite` (dev server)
+- `build` — `vite build` (production build)
+- `preview` — `vite preview` (serve locally preview build)
+- `lint` — run ESLint
 
-## Notes about the banner asset
+Recommended next improvements
+-----------------------------
+- Replace large GIFs with animated WebP for better compression.
+- Add automated CI checks (lint + build) and ensure the CI publishes or deploys `dist` artifacts.
+- Add unit/integration tests for key components.
+- Improve accessibility on carousel controls (ARIA labels, keyboard navigation).
 
-To ensure the mobile GIF is included in the production build, import the GIF in `Home.jsx` and reference it as an imported asset (e.g., `import bannerGif from '../images/gifs/bannergif.gif'`), rather than using absolute paths. This allows Vite to copy and hash the asset into `dist`.
+Presenting this project to employers
+-----------------------------------
+When demonstrating this repo, emphasize:
+- concrete changes you made (e.g., switching mobile banner to imported GIF and fixing build pipeline),
+- how the build & deploy pipeline works (Vite -> dist -> Nginx in Docker), and
+- planned improvements (performance, tests, accessibility).
 
-## Contributing
-
-1. Fork the repository and create a feature branch.
-2. Keep commits small and focused; write meaningful commit messages.
-3. Run `npm ci` and `npm run build` locally before opening a PR to ensure no build regressions.
-
-## Commit & Deploy
-
-- After making code changes, commit and push. If you want me to commit these changes for you, I can initialize Git here and push to a remote if you provide the remote URL and credentials.
-
-## License
-
-Specify the project license here (e.g., MIT) — update `LICENSE` file accordingly.
+License
+-------
+Add a `LICENSE` file (e.g., MIT) if you plan to publish publicly.
 
 
